@@ -1,0 +1,105 @@
+<div class="container">
+  <div class="row">
+    <div class="col s12 m12">
+      <div class="card grey lighten-5 z-depth-3" style="border-radius: 15px;">
+        <div class = "container">
+          <div class="card-content black-text"> 
+            <div style="font-size: 20px; line-height: 200%; margin: 1.5em 0em;">
+              <center>
+                <form action="/taxiple/create" method="GET">
+                  <div class="row">
+                    <div style="border: solid 3px #F5C71D; border-radius: 10px; padding: 0.5em 0.5em;">
+                      <p style="font-size: 0.8em; width: 50%; margin: 0px; float: left; text-align:center;">출발</p>
+                      <p style="font-size: 0.8em; width: 50%; margin: 0px; float: left; text-align:center;">도착</p>
+                      <select class="browser-default btn" id="mk_dropdown" name="course">
+                        <option value="<%= current_user.univ.uni_route_1  %>" selected><%= current_user.univ.uni_route_1  %></option>
+                        <option value="<%= current_user.univ.uni_route_4 %>"><%= current_user.univ.uni_route_4 %></option>
+                        <% if !current_user.univ.uni_route_2.nil? %>
+                          <option value="<%= current_user.uni.univ_route_2 %>"><%= current_user.univ.uni_route_2 %></option>
+                          <option value="<%= current_user.uni.univ_route_5 %>"><%= current_user.univ.uni_route_5 %></option>
+                        <% end %>
+                        <% if !current_user.univ.uni_route_3.nil? %>
+                          <option value="<%= current_user.uni.univ_route_3 %>"><%= current_user.univ.uni_route_3 %></option>
+                          <option value="<%= current_user.uni.univ_route_6 %>"><%= current_user.univ.uni_route_6 %></option>
+                        <% end %>
+                      </select>
+                    </div>
+                  </div>
+                  <div class="row">
+                    <div class="col 5s" style="border: solid 3px #F5C71D; border-radius: 10px; padding: 0.4em 0.2em 0.2em 0.2em;height: 6.6em;">
+                      <label>출발시간</label><br>
+                      <select class="browser-default btn" id="mk_dropdown" name="user_hour" style="width: auto; padding: 0em 0em; display: inline-block;">
+                        <% while @hour_compare < 21 do %>
+                          <% if @hour_compare == @time.hour %>
+                            <option value=<%= @hour_compare %> selected><%= @hour_compare %></option>
+                            <% @hour_compare += 1 %>
+                          <% else %>
+                            <option value=<%= @hour_compare %>><%= @hour_compare %></option>
+                            <% @hour_compare += 1 %>
+                          <% end %>
+                        <% end %>
+                      </select>
+                      <label>&nbsp;&nbsp;:&nbsp;&nbsp;</label>
+                      <select name="user_minute" class="browser-default btn" id="mk_dropdown" style="width: auto; padding: 0em 0em; display: inline-block;">
+                        <% while (60 - @minu) > 0 do %>
+                          <% if @minu == @time_minute %>
+                            <option value=<%= @minu %> selected><%= @minu %></option>
+                            <% @minu += 5 %>
+                          <% else %>
+                            <option value=<%= @minu %>><%= @minu %></option>
+                            <% @minu += 5 %>
+                          <% end %>
+                        <% end %>
+                      </select>
+                    </div>
+                    <div class="col 6s offset-s1" style="border: solid 3px #F5C71D; border-radius: 10px; text-align: center; padding: 0.3em 0.5rem;margin-left: 0.3em;float: right;">
+                      <div style="display: block;">
+                        <input id="girl_only_1" type="radio" name="girl_only" value="girl">
+                        <label for="girl_only_1" style="padding-left: 1.6em;">여성전용</label>
+                      </div>
+                      <div style="display: block;"> 
+                        <input id="girl_only_2" type="radio" name="girl_only" value="common" checked="checked">
+                        <label for="girl_only_2" style="padding-left: 1.6em;">일반</label>
+                      </div>
+                      <div style="display: block;">
+                        <select class="browser-default btn" name="num_member_limit" id="mk_dropdown" style="width: auto; padding: 0em 0em 0em 0.5em;">
+                          <option value="2">2명</option>
+                          <option value="3" selected>3명</option>
+                          <option value="4">4명</option>
+                        </select>
+                      </div>
+                    </div>
+                  </div>
+                  <button class="btn waves-effect waves-light" type="submit" style="border-radius: 5px; margin: 0em; width: 100%;">
+                    <div class="valign-wrapper center-align">
+                        <img class="valign" src="../../assets/말풍선.jpg" style="width: 1.4em; margin: 0% 0.5em 0% 28%;">
+                        <span class="valign">방만들기</span>
+                    </div>
+                  </button>
+                </form>
+              </center>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<% if 7 > @time_hour && @time_hour > 21 %>
+<div class="container">
+    <div class="row">
+      <div class="col s12 m6">
+        <div class="card grey lighten-5 z-depth-3">
+          <div class = "container">
+             <div class="card-content black-text">
+               <center>
+               <h3>운영시간이<br> 종료 되었습니다</h3>
+              <h6>운영 시간 : 오전 8시 ~ 오후 8시</h6>
+               </center>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+<% end %>

@@ -1,0 +1,79 @@
+<!--태블릿 & 데스크탑 환경 start-->
+<div class="hide-on-small-only">
+  <div style="position: relative;">
+    <img src="../../assets/택시플상세로고.jpg">
+    <section class="login-box">
+    <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %> 
+      <div class="login-content">
+        <%= f.email_field :email, autofocus: true, :class => "login-mail", :placeholder => "웹메일" %>
+      </div>
+    
+      <div class="login-content">
+        <%= f.password_field :password, autocomplete: "off", :class => "login-pass", :placeholder => "비밀번호"  %>
+      </div>
+    
+      <%# if devise_mapping.rememberable? -%>
+        <div class="login-content">
+          <%#= f.label :remember_me %>
+          <%#= f.check_box :remember_me, :style => "width: 7%;" %>
+        </div>
+      <%# end -%>
+  		<br>
+      <div class="actions login-content">
+        <%= f.button "로그인", :class => "login-enter btn"  %>
+      </div>
+  	  <div style="margin: 7px;">
+  	  <%- if devise_mapping.recoverable? && controller_name != 'passwords' && controller_name != 'registrations' %>
+  	    <%= link_to "비밀번호 찾기", new_password_path(resource_name), :class => "login-bottom-text" %> &nbsp;&nbsp;|&nbsp;&nbsp;
+   	  <% end -%>
+   	  <%- if devise_mapping.confirmable? && controller_name != 'confirmations' %>
+   	   	<%= link_to "인증메일 다시 받기", new_confirmation_path(resource_name), :class => "login-bottom-text" %><br />
+   		<% end -%>
+   		</div>
+   	<% end %>
+    </section>
+  </div>
+</div>
+<!--모바일 환경 start-->
+<div class="hide-on-med-and-up">
+  <div style="position: relative; text-align: center; background-color: #F5C71D; height: 100%; padding-bottom: 7em;">
+    <img src="../../assets/택시플전체로고.jpg" style="width: 50%;">
+    <div style="text-align: center; width: 45%; margin: 0.5em;">
+      <a class="login-bottom-text" href="#">이용방법</a>
+    </div>
+    <section class="login-box">
+    <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %> 
+      <div class="login-content" style="width: auto;">
+        <%= f.email_field :email, autofocus: true, :class => "login-inputbox", :placeholder => "웹메일" %>
+      </div>
+    
+      <div class="login-content" style="width: auto;">
+        <%= f.password_field :password, autocomplete: "off", :class => "login-inputbox", :placeholder => "비밀번호"  %>
+      </div>
+    
+      <%# if devise_mapping.rememberable? -%>
+        <!--<div class="login-content">-->
+          <%#= f.label :remember_me %>
+          <%#= f.check_box :remember_me, :style => "width: 7%;" %>
+        <!--</div>-->
+      <%# end -%>
+  		<br>
+      <div class="actions login-content" style="width: auto;">
+        <%= f.button "로그인", :class => "login-enter btn", :style => "width: 6.6em; border-radius: 10px; background-color: #F5C71D;"  %>
+      </div>
+      <br>
+  	  <center>
+  	    <div class="login-bottom-links">
+    	  <%- if devise_mapping.recoverable? && controller_name != 'passwords' && controller_name != 'registrations' %>
+    	    <%= link_to "비밀번호 찾기", new_password_path(resource_name), :class => "login-bottom-text" %> &nbsp;&nbsp;|&nbsp;&nbsp;
+     	  <% end -%>
+     	  <%- if devise_mapping.confirmable? && controller_name != 'confirmations' %>
+     	   	<%= link_to "인증메일 다시 받기", new_confirmation_path(resource_name), :class => "login-bottom-text" %> &nbsp;&nbsp;|&nbsp;&nbsp;
+     		<% end -%>
+     		<a class="login-bottom-text"  href="/users/sign_up">회원가입</a>
+   		  </div>
+   	    <% end %>
+   	  </center>
+    </section>
+  </div>
+</div>

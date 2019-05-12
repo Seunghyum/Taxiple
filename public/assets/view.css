@@ -1,0 +1,336 @@
+@font-face{
+ font-family:'Godo';
+ font-style:normal;
+ font-weight:400;
+ src:url('//cdn.jsdelivr.net/korean-webfonts/1/corps/godo/Godo/GodoM.woff2') format('woff2'),
+     url('//cdn.jsdelivr.net/korean-webfonts/1/corps/godo/Godo/GodoM.woff') format('woff');
+}
+@font-face{
+ font-family:'Godo';
+ font-style:normal;
+ font-weight:700;
+ src:url('//cdn.jsdelivr.net/korean-webfonts/1/corps/godo/Godo/GodoB.woff2') format('woff2'),
+     url('//cdn.jsdelivr.net/korean-webfonts/1/corps/godo/Godo/GodoB.woff') format('woff');
+}
+
+
+body {
+  font-family: "Godo",sans-serif;
+}
+
+
+
+/*로그인 페이지 START*/
+.login-content{
+  width: 30em;
+}
+
+.login-inputbox {
+  width: 75%;
+  padding: 0em 1.2em;
+  border-radius: 10px;
+}
+
+/*.login-content > .login-mail{*/
+/*  padding: 0px 2em;*/
+/*}*/
+
+.login-enter{
+    background-color: orange;
+    font-size: 3em;
+    color: white;
+    width: 50%;
+    font-size: 2em;
+    height: 2em;
+}
+.btn:hover{
+  background-color: yellow;  
+}
+
+.login-bottom-text {
+  color: white;
+  text-decoration: none;
+  
+}
+.login-bottom-text:hover {
+  color: yellow;
+}
+
+.login-bottom-links {
+  margin: 7px;
+  color: rgb(255, 255, 255);
+  font-size: 80%; 
+}
+
+/*로그인 페이지 END*/
+.back-img_3 {
+    background-image: url("택시플 첫화면_2-bc1d9ae8479232884cea8ebce10b0c4e4e4f552f0bde79df5555591137293c0b.jpg");  
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-attachment:fixed;
+    width: 100%;
+    height: 0%;
+    padding-top: 10%;
+}
+
+
+.back-img_1 {
+		background: url(미터기_배경.jpg) no-repeat center center fixed; 
+		  -webkit-background-size: cover;
+			  -moz-background-size: cover;
+				  -o-background-size: cover;
+					  background-size: cover;
+    width: 100%;
+    height: 100%;
+    padding-bottom: 10%;
+    padding-top: 10%;
+}
+
+.blur{
+		background-color: black;
+		opacity: 0.5;
+		position: absolute;
+		width: 100%;
+		height: 100em;
+}
+.back-img_2 {
+    width: 100%;
+    height: 100%;
+    padding-bottom: 20%;
+    padding-top: 20%;
+}
+/*1page 2block*/
+
+.text-block h5 {
+	float: left;
+	margin-left: 5%;
+}
+/*네이버 바*/
+
+header {
+  position: absolute;
+  display: block;
+  width: 100%;
+  height: auto;
+  padding: 50px 0px 2px 0px;
+  top: 0;
+  background: #FA343E;
+  box-shadow: 0px 2px 3px rgba(0, 0, 0, 0.3);
+}
+
+#main-menu {
+  position: relative;
+  display: inline-block;
+  overflow: hidden;
+  margin: 10px auto;
+}
+#main-menu li {
+  list-style-type: none;
+  position: relative;
+  display: block;
+  float: left;
+  left: auto;
+  margin: 0px 10px;
+  font-family: Lato, sans-serif;
+  font-weight: 400;
+  color: #fafafa;
+  cursor: pointer;
+  -webkit-transition: all 0.2s ease-out;
+  transition: all 0.2s ease-out;
+}
+
+#hover-follower {
+  position: absolute;
+  display: block;
+  width: auto;
+  height: 2px;
+  margin-left: 10px;
+  background: #fafafa;
+  -webkit-transition: all 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  transition: all 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+
+/*page4 대기방 보기 창*/
+#highlight {
+  background-color:#fbc02d;
+  color:white;
+  margin: 0em 0.5em;
+  border-radius: 10px;
+  padding: 0em 1em;
+  width:30%;
+}
+#highlight input {
+  background-color:#fbc02d;
+  color:white;
+  margin-left: -1em;
+  width: 350px;
+}
+#non-highlight {
+  background-color:white;
+  color: #fbc02d;
+  /*margin: 0em 0.5em;*/
+  width: 30%;
+  border-radius: 10px;
+  padding: 0em 1em;
+}
+
+#non-highlight input {
+  background-color:white;
+  color: #fbc02d;
+  margin-left: -1em;
+  width: 350px;
+}
+
+/* 첫화면 배너 */
+.banner {
+  background-color: #fdd835;  
+  padding:1rem;
+  border-radius: 10px;
+  width: 70%;
+}
+
+.banner-line {
+  border-radius: 10px;
+  border: dotted 2px black;
+  
+}
+
+.tagline {
+  text-align: center;
+}
+.change-container {
+  position: relative;
+  display: inline-block;
+  width: 25rem;
+  border-bottom:1px solid red;
+  margin-bottom:-10px;
+}
+.changing {
+  position:absolute;
+  overflow:hidden;
+  display: inline-block;
+  color:red;
+  width:100%;
+  left:0;
+  bottom:0;
+  height:0;
+  opacity:0;
+  text-rendering:optimizeLegibility;
+  animation : revealNextWord 8s ease-in-out infinite;
+}
+
+.changing:nth-child(2) {
+  animation-delay:2s;
+}
+.changing:nth-child(3) {
+  animation-delay:4s;
+}
+.changing:nth-child(4) {
+  animation-delay:6s;
+}
+
+@keyframes revealNextWord {
+    0% { opacity: .3; height: 0; }
+    10% { opacity: 1; height: 1.2em; }
+    20% { opacity: 1; height: 1.2em; }
+	  28% { opacity: 0; height:2em;}
+    100% { opacity: 0; }
+}
+
+/*footer*/
+.footer #button{
+	width:35px;
+	height:35px;
+	border: #727172 12px solid;
+	border-radius:35px;
+	margin:0 auto;
+	position:relative;
+	-webkit-transition: all 1s ease;
+    -moz-transition: all 1s ease;
+    -o-transition: all 1s ease;
+    -ms-transition: all 1s ease;
+    transition: all 1s ease;
+}
+.footer #button:hover{
+	width:35px;
+	height:35px;
+	border: #3A3A3A 12px solid;
+	-webkit-transition: all 1s ease;
+    -moz-transition: all 1s ease;
+    -o-transition: all 1s ease;
+    -ms-transition: all 1s ease;
+    transition: all 1s ease;
+	position:relative;
+}
+.footer {
+	bottom:0;
+	left:0;
+	position:fixed;
+    width: 100%;
+    height: 2em;
+    overflow:hidden;
+    margin:0 auto;
+	-webkit-transition: all 1s ease;
+    -moz-transition: all 1s ease;
+    -o-transition: all 1s ease;
+    -ms-transition: all 1s ease;
+    transition: all 1s ease;
+	z-index:999;
+}
+.footer:hover {
+	-webkit-transition: all 1s ease;
+    -moz-transition: all 1s ease;
+    -o-transition: all 1s ease;
+    -ms-transition: all 1s ease;
+    transition: all 1s ease;
+	height: 10em;
+}
+.footer #container{
+	margin-top:5px;
+	width:100%;
+height:100%;
+  position:relative;
+  top:0;
+  left:0;
+	background: #3A3A3A;
+}
+.footer #cont{
+  position:relative;
+  top:-45px;
+  right:190px;
+	width:150px;
+	height:auto;
+	margin:0 auto;
+}
+.footer_center{
+	width:500px;
+	float:left;
+  text-align:center;
+}
+.footer h3{
+	font-family: 'Helvetica';
+	font-size: 30px;
+	font-weight: 100;
+	margin-top:70px;
+	margin-left:40px;
+}
+
+.campus_select > select {
+  width:100%;
+  margin-left: 1em;
+  display: inline-block;
+  height: 36px;
+  line-height: 36px;
+  outline: 0px none;
+  padding: 0px 2rem;
+  text-transform: uppercase;
+  vertical-align: middle;
+  text-decoration: none;
+  color: #FFF;
+  background-color: #F5C71D;
+  text-align: center;
+  letter-spacing: 0.5px;
+  transition: all 0.2s ease-out 0s;
+  cursor: pointer;
+  
+}

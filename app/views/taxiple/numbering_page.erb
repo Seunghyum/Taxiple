@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>TAXIPLE</title>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <!-- Site's designed for mobile -->
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"/>
+  <!--Import jQuery before materialize.js-->
+  <link rel="stylesheet" type="text/css" href="../../assets/materialize.css">
+  <script type="text/javascript" src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
+  <script type="text/javascript" src="../../assets/materialize.js"></script>
+  <script type="text/javascript" src="../../assets/make_room.js"></script>
+  <script type="text/javascript" src="../../assets/page_4.js"></script>
+  <link rel="stylesheet" type="text/css" href="../../assets/page_4.css"><!-- 한나체 -->
+  <link rel="stylesheet" type="text/css" href="../../assets/make_room.css">
+    <!--구글아이콘-->
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+  <!--pusher plugin-->
+  <script src="https://js.pusher.com/2.2/pusher.min.js"></script>
+</head>
+<body>
+<center>
+<span style="font-size: 500px;">
+<% if List.all.where(person_1: current_user.email) != nil %>
+   <%= List.all.where(person_1: current_user.email).take.id %>
+<% elsif List.all.where(person_2: current_user.email) != nil %>
+   <%= List.all.where(person_2: current_user.email).take.id %>
+<% elsif List.all.where(person_3: current_user.email) != nil %>
+   <%= List.all.where(person_3: current_user.email).take.id %>
+<% else %>
+   <%= List.all.where(person_4: current_user.email).take.id %>
+<% end %>
+</span>
+</center>
+</body>
+</html>

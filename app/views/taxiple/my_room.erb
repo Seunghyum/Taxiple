@@ -1,0 +1,197 @@
+<div class="container">
+  <div class="row" style="margin-bottom: 0px;">
+    <div class="col s12 m12">
+      <p id="notice"><%= notice %></p>
+      <div class="card grey lighten-5 z-depth-0">
+       <%# if @mkroom.count(user_id: current_user.id) > 0 && @mkroom.where(user_id: current_user.id).count(finish: false) == 1 && @user.where(id: current_user).count(register_to_use: false) == 1%>
+        <center>
+        <% if !current_user.mk_room_id.nil? && current_user.register_to_use == true %>
+          <% @mkroom.where(id: current_user.mk_room_id).each do |p| %>  
+            <div class="container">
+              <div class="card-content black-text" style="border-radius: 20px; border: solid 8px #F5C71D;">
+                <span style="font-size: 1.3em; text-align: center;"><p><%= p.course %></p></span>
+                <p style="border-bottom: solid 2px #F5C71D; margin-bottom: 5px;"><%= p.user_hour%> : <%= p.user_minute%> 출발</p>
+                <% @user.where(mk_room_id: current_user.mk_room_id).each do |name| %>
+                    <span style="margin: 0em 5px;"><img src="../../assets/남자.jpg" style="height: 1.2em;"><%= name.student_name %></span>
+                <% end %>
+                <% (current_user.mk_room.num_member_limit - current_user.mk_room.num_of_user_join).times do |x| %>
+                    <span style="margin: 0em 5px;"><img src="../../assets/빈사람.jpg" style="height: 1.2em;">빈자리</span>
+                <% end %>
+              </div>
+            </div>
+          <% end %>
+          <div class="FixedHeightContainer"><!--page_4.css--->
+            <%= current_user.list_id %>번 채팅방
+            <div class="Content">
+              <% @chat.where(list_id: current_user.list_id).each do |c| %>
+                <% if current_user.id == c.user_id %><!--현재 유저가 스스로 쓴 글-->
+                <div class="container">
+                  <div class="row" style="margin-bottom: 0px;">
+                    <div class="col s10 offset-s2 m10 offset-m2" style="padding: 0px;">
+                      <div class="card yellow accent-2 z-depth-0" style="border-radius: 10px; float:right;">
+                        <div class="container">
+                          <div class="card-content black-text">
+                            <p> <%= c.user_chat %> <br> <span style="font-size: 10px; float:right;"><%= c.created_at.hour %>:<%= c.created_at.min %></span> </p>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <% else %><!--다른 유저가 쓴 글-->
+                  <div class="container">
+                    <div class="row" style="margin-bottom: 0px;">
+                      <div class="col s2 m2" style="padding:0px; margin-top: 1em; float:left;">
+                        <%= @user.where(id: c.user_id).take.student_name %>
+                      </div>
+                      <div class="col s10 m10" style="padding: 0px;">
+                        <div class="card lime lighten-5 z-depth-0" style="border-radius: 10px; float:left;">
+                          <div class="container">
+                            <div class="card-content black-text">
+                              <p> <%= c.user_chat %> <br> <span style="font-size: 10px; float:left;"><%= c.created_at.hour %>:<%= c.created_at.min %></span> </p>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                <% end %>
+              <% end %>
+              <!--실시간 입력된 채팅이 기록될 공간--->
+              <div id="chat_list"></div>
+              <!--현재 접속중인 학생의 이름얻기위한 코드-->
+              <div id="student_name_1" class="<%= current_user.student_name %>"></div>
+              <% if current_user.list.person_2.nil? %>
+                <div id="student_name_2" class="<%= current_user.list.person_2 %>"></div>
+              <% else %>
+                <div id="student_name_2" class="none"></div>
+              <% end %>
+              <% if current_user.list.person_2.nil? %>
+                <div id="student_name_3" class="<%= current_user.list.person_3 %>"></div>
+              <% else %>
+                <div id="student_name_3" class="none"></div>
+              <% end %>
+              <% if current_user.list.person_2.nil? %>
+                <div id="student_name_4" class="<%= current_user.list.person_4 %>"></div>
+              <% else %>
+                <div id="student_name_4" class="none"></div>
+              <% end %>
+            </div>
+          </div>
+          <div class="container"><!-- 채팅입력창-->
+            <div class="row" style="margin-bottom:0px;">
+            <form class="col s12">
+              <div class="row" style="border-radius: 10px; border: solid 3px #F5C71D; margin-bottom: 5px;">
+                <div class="input-field col s10">
+                  <textarea id="chat_content" rows="4" style="background: white; height: 4rem; border: none;"></textarea>
+                  <label for="icon_prefix2"></label>
+                </div>
+                <div class="col s2">
+                  <a class="waves-effect waves-light btn" href="#" id="submit_msg" style="top: 0.7em; right: 1em; padding: 0.6em 0px; width: 3em; height: 4em;">입력</a>
+                </div>
+              </div>
+            </form>
+          </div>
+          </div>
+        <!--<form action="/taxiple/getout" method="GET">-->
+          <!--<input type="hidden" name="mk_room_num" value="<%#= current_user.mk_room_id %>">-->
+          <a href="/taxiple/getout"><div><img src="../../assets/방나가기.jpg" style="width: 12px; margin: 0em 0.3em;"><b><span style="color: gray;">방 나가기</div></span></b></a>
+        <!--</form>-->
+        <% else %>
+        <!--방을 만들지도 참여한 적도 없는 유저--->
+          <div class="container">
+            <div class="card-content black-text">
+              <span class="card-title black-text">방을 만들거나 참여하시지 않으셨군요!</span> 
+              <p>상단 좌측의 
+              <a class="btn-floating waves-effect waves-light red hoverable content"><i class="material-icons">add</i></a>
+              를 클릭해 방을 만들거나 대기중인 방에 참여해주세요!
+              </p>
+            </div>
+          </div>
+        <% end %>
+        </center>
+      </div>
+    </div>
+  </div>
+</div>
+<script>
+$(document).ready(function() {
+    //pusher서버로부터 값을 받는 부분 start
+    var pusher = new Pusher('318058814b98a5f6494c', {
+      encrypted: true
+    });
+    var channel = pusher.subscribe('onlyone');
+    channel.bind('new_message', function(data) {
+    //클릭시 ajax로 값을 view에 던지는 코드 start
+    var student_name_1 = document.getElementById("student_name_1");
+    var name_1 = student_name_1.getAttribute("class");
+    var student_name_2 = document.getElementById("student_name_2");
+    var name_2 = student_name_2.getAttribute("class");
+    var student_name_3 = document.getElementById("student_name_3");
+    var name_3 = student_name_3.getAttribute("class");
+    var student_name_4 = document.getElementById("student_name_4");
+    var name_4 = student_name_4.getAttribute("class");
+    //채팅을 입력한(push로 서버에 요청을 한) 어떤 유저(some_student_name)의 이름을 컨트롤러에서
+    //some_student_name으로 받은 후 그 유저가 현재유저인지(name_1) 그밖의 유저인지(name_2,name_3,name_4)를 골라내는 과정이다.
+    if ( data.some_student_name == name_1 ) {
+      $("#chat_list").append(
+          '<div class="container">'
+           + '<div class="row" style="margin-bottom: 0px;">'
+              + '<div class="col s10 offset-s2 m10 offset-m2" style="padding: 0px;">'
+                + '<div class="card yellow accent-2 z-depth-0" style="border-radius: 10px; float:right;">'
+                  + '<div class="container">'
+                    + '<div class="card-content black-text">'
+                      + '<p>' + data.msg + '<br><span style="font-size: 10px; float:right;"></span></p>'
+                    + '</div>'
+                  + '</div>'
+                + '</div>'
+              + '</div>'
+            + '</div>'
+          + '</div>'
+       );
+    } else if(data.some_student_name === name_2 || data.some_student_name === name_3 || data.some_student_name === name_4) {
+        $("#chat_list").append(
+          '<div class="container">'
+          + '<div class="row" style="margin-bottom: 0px;">'
+            + '<div id="student_name" class="col s2 m2" style="padding:0px; margin-top: 1em; float:left;">' 
+              + data.some_student_name
+            + '</div>'
+            + '<div class="col s10 m10" style="padding: 0px;">'
+              + '<div class="card lime lighten-5 z-depth-0" style="border-radius: 10px; float:left;">'
+                + '<div class="container">'
+                  + '<div class="card-content black-text">'
+                    + '<p>' + data.msg + '</p>'
+                  + '</div>'
+                + '</div>'
+              + '</div>'
+            + '</div>'
+          + '</div>'
+        + '</div>'
+       );
+       console.log('sucess');
+    } else {
+       console.log('sucess');
+    }
+    // $("#chat_list").append(
+      // data.student_name + " : " + data.msg
+                            // );
+    });
+    //클릭시 ajax로 값을 컨트롤러에 받아오는 코드 start
+    $("#submit_msg").click(function() {
+          var student_name_5 = document.getElementById("student_name_1");
+          var name_5 = student_name_5.getAttribute("class");
+        $.ajax({
+            data: {
+                content: $("#chat_content").val(),
+                some_student_name: name_5 
+            },
+                url: "/taxiple/write_chat",                
+                success: function() {
+                    $("#chat_content").val('');
+                    $("#chat_content").focus();
+            }
+            
+        });
+    }); 
+});
+</script>

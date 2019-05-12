@@ -1,0 +1,55 @@
+<!--태블릿 & 데스크탑 환경 start-->
+<div class="hide-on-small-only">
+  <div style="position: relative;">
+    <img src="../../assets/택시플상세로고.jpg">
+    <section class="login-box">
+    <%= form_for(resource, as: resource_name, url: password_path(resource_name), html: { method: :post }) do |f| %>
+      <%= devise_error_messages! %>
+    
+      <div class="login-content">
+        <%= f.email_field :email, :placeholder => "비밀번호 수정메일 받을 웹메일", :class => "login-mail", autofocus: true %>
+      </div>
+    
+      <div class="actions login-content">
+        <%= f.submit "Send me reset password instructions" %>
+      </div>
+    <% end %>
+    
+    <%= render "devise/shared/links" %>
+  </div>
+</div>
+<!--모바일 환경 start-->
+<div class="hide-on-med-and-up">
+  <div style="position: relative; text-align: center; background-color: #F5C71D; height: 100%; padding-bottom: 2em;">
+    <img src="../../assets/택시플전체로고.jpg" style="width: 50%;">
+    <div style="text-align: center; width: 45%; margin: 0.5em;">
+      <a class="login-bottom-text" href="#">이용방법</a>
+    </div>
+    <section class="login-box">
+    <%= form_for(resource, as: resource_name, url: password_path(resource_name), html: { method: :post }) do |f| %>
+      <%= devise_error_messages! %>
+    
+      <div class="login-content" style="width: auto;">
+        <!--<%= f.email_field :email, :placeholder => "비밀번호 수정메일 받을 웹메일", :class => "login-inputbox", autofocus: true %>-->
+      </div>
+    
+      <div class="actions login-content" style="width: auto;">
+        <%= f.submit "메일 보내기", :class => "login-enter btn", :style => "width: 8em; border-radius: 10px; background-color: #F5C71D; font-size: 2.5em;" %>
+      </div>
+    <% end %>
+    <br>
+    <%#= render "devise/shared/links" %>
+    <%- if controller_name != 'sessions' %>
+      <%= link_to "로그인", new_session_path(resource_name), :class => "login-bottom-text" %>&nbsp;&nbsp;<span style="color: white;">|</span>&nbsp;&nbsp;
+    <% end -%>
+    
+    <%- if devise_mapping.registerable? && controller_name != 'registrations' %>
+      <%= link_to "회원가입", new_registration_path(resource_name), :class => "login-bottom-text" %><br />
+    <% end -%>
+    
+    <%- if devise_mapping.confirmable? && controller_name != 'confirmations' %>
+      <%= link_to "확인 메일을 못 받으셨나요?", new_confirmation_path(resource_name), :class => "login-bottom-text" %><br />
+    <% end -%>
+    </section>
+  </div>
+</div>

@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>TAXIPLE</title>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <!-- Site's designed for mobile -->
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"/>
+  <!--Import jQuery before materialize.js-->
+  <link rel="stylesheet" type="text/css" href="/../../assets/materialize.css">
+  <link rel="stylesheet" type="text/css" href="/../../assets/view.css">
+  <!--아이콘-->
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+  <script type="text/javascript" src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
+  <script type="text/javascript" src="/../../assets/materialize.js"></script>
+  <!--favicon 업데이트-->
+  <link rel="SHORTCUT ICON" href="https://ttt-seunghyum-1.c9.io/favicon2.ico" />
+</head>
+<body>
+<!-- 태블릿 & 데스크탑 환경의 네비게이션 바-->
+<div class="navbar-fixed hide-on-small-only">
+  <nav>
+    <div class="nav-wrapper">
+      <div class="container">
+        <a href="/users/sign_in"><img src="/../../assets/택시플이름로고.jpg" style="width: 8em; height: 3em; margin: 10px;"></a>
+        <ul class="right hide-on-med-and-down">
+          <li><a href="#desktop_intro"><b>서비스 소개</b></a></li>
+          <% if current_user.nil? %>
+            <li><a href="/taxiple/page4"><b>서비스 이용하기</b></a></li>
+            <li><a href="/users/sign_up"><b>회원가입하기</b></a></li><!--로그인 중이면 "내 정보" 로그아웃 중이면 "로그인하기"-->
+          <% else %>
+            <li><b><%= current_user.email %></b></li>
+            <li><a href="/taxiple/page4"><b>서비스 이용하기</b></a></li
+            <li><a href="/users/sign_out"><b>로그아웃</b></a></li>>
+          <% end %>
+        </ul>
+      </div>
+    </div>
+  </nav>
+</div>
+  <!--테블릿&데스크탑 화면-->
+<div class="hide-on-small-only">
+  <div class="parallax-container" style="height: auto;">
+    <div class="blur">
+    </div>
+    <div class="back-img_1">
+  	<center>
+  <%= yield %>
+    </center>
+  	</div>
+  </div>
+  <div class="section back-img_2" style="padding:2em 2em 0em 2em;">
+    <div id="service-intro"></div>
+    <div class="row container" style="margin-bottom: 0em;">
+  		<div id="desktop_intro"><b><u>서비스 소개</u></b></div>
+  			<center>
+  			<div style="margin-top: 5em;">
+  				<div class="col s6 m6 l6">
+  					<img src="../../assets/핸드폰.png" style="float: left; width: 30em; margin: 0em 3em;">
+  				</div>
+  				<div class="col s6 m6 l6">
+  				<div class="text-block">
+  					<h4><b>대학생 택시 합승 서비스, 택시플</b></h4>
+  					<br>
+  					<center>
+  					<div style="">
+  					<h5>택시를 혼자 이용하기 부담스럽거나 무서웠던</h5>
+  					<h5>전국의 대학생들을 위해 준비 했습니다.</h5>
+  					<h5>더 이상 혼자 비싼 요금을 지불하며 택시 타지마세요!</h5>
+  					<h5>하염없이 버스만 기다리다가 지각하지마세요!</h5>
+  					<h5>이제 택시플과 함께 빠르고 저렴하게 통학하세요.</h5>
+  					</div>
+  					</center>
+  					<div class="login-content">
+  					  <a href="#"><button name="button" class="login-enter btn" style="margin-top: 0.8em;width: 60%;height: 100%;">택시플 이용하기</button></a>
+  					</div>
+  				</div>
+  				</div>
+  			</div>
+  		</center>
+    </div>
+  </div>
+  <section style="background-color: #eceff1; padding: 10em 0em;">
+  	<div class="container">
+  		<div class="row">
+  			<div class="col s4 m4 l4">
+  				<center>
+  					<div id="page1">
+  					<img src="../../assets/번개아이콘.jpg" style="margin:1em;">
+  					</div>
+  					<h3><b>간편한 합승</b></h3>
+  					<h5 style="margin:3em 0em; line-height: 2em;">몇 번의 클릭만으로<br>
+  							간단하고 쉽게 방을 만들거나<br>
+  							참여할 수 있습니다.
+  					</h5>
+  				</center>
+  			</div>
+  			<div class="col s4 m4 l4">
+  				<center>
+  					<img src="../../assets/원아이콘.jpg" style="margin:1em;">	
+  					<h3><b>저렴한 합승</b></h3>
+  					<h5 style="margin:3em 0em; line-height: 2em;">목적지가 같은 학생들과의 합승으로<br>
+  							버스요금보다 저렴하게<br>
+  							통학할 수 있습니다.
+  					</h5>
+  				</center>
+  			</div>
+  			<div class="col s4 m4 l4">
+  				<center>
+  					<img src="../../assets/하트아이콘.jpg" style="margin:1em;">
+  					<h3><b>안전한 합승</b></h3>
+  					<h5 style="margin:3em 0em; line-height: 2em;">가입시, 각 학교의 웹메일을 통한<br>
+  							인증으로, 같은 학교 학생들과<br>
+  							안전하게 택시를 합승할 수 있습니다.
+  					</h5>
+  				</center>
+  			</div>
+  		</div>
+  	</div>
+  </section>
+  <div class="footer">
+    <div id="button_1"></div>
+    <div id="container">
+      <div id="cont">
+        <div class="footer_center">
+        	   <h3 style="color: white;">Copyright © TEXIPLE 2015</h3>
+        	   <h5 style="color: white;">Seunghyun Moon / Uonji Jeun / Junsoo Jeun</h5>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- 모바일 환경 네비게이션 바 start-->
+<div class="navbar hide-on-med-and-up">
+  <nav>
+    <div class="nav-wrapper" style="background-color: #F5C71D">
+      <div class="container">
+        <a href="#" data-activates="mobile-demo" class="button-collapse" style="color: black;">
+          <i class="large material-icons" style="color: white;">list</i>
+        </a>
+        <ul class="side-nav" id="mobile-demo" style="background-color: #F5C71D;">
+          <li><a class="modal-trigger" href="/taxiple/mobile_intro"><b>서비스 소개</b></a></li>
+          <li><a class="modal-trigger" href="#"><b>이용방법</b></a></li>
+          <% if current_user.nil? %>
+            <li><a class="modal-trigger" href="/taxiple/page4"><b>서비스 이용하기</b></a></li>
+            <li><a class="modal-trigger" href="/users/sign_up"><b>회원가입하기</b></a></li><!--로그인 중이면 "내 정보" 로그아웃 중이면 "로그인하기"-->
+          <% else %>
+            <li><a class="modal-trigger" href="/taxiple/page4"><b>서비스 이용하기</b></a></li>
+            <li><a class="modal-trigger" href="/users/sign_out"><b>로그아웃</b></a></li>
+            <li><a class="modal-trigger" href="#sign-in"><b>신고하기</b></a></li>
+          <% end %>
+        </ul>
+      </div>
+    </div>
+  </nav>
+</div>
+<!-- 모바일 환경 네비게이션 바 END-->
+<!-- 모바일 환경 body Start-->
+
+<div class="hide-on-med-and-up">
+<%= yield %>
+</div>
+
+<!-- 모바일 환경 body End-->
+<script>
+   $(document).ready(function(){
+      $('.parallax').parallax();
+    });
+    
+    var options = [
+      {selector: '#service-intro', offset: 50, callback: 'Materialize.toast("안녕하세요~ 택시플입니다^^", 1500 )' },
+      {selector: '#staggered-test', offset: 400, callback: 'Materialize.showStaggeredList("#staggered-test")' },
+      {selector: '#image-test', offset: 500, callback: 'Materialize.fadeInImage("#image-test")' }
+    ];
+    Materialize.scrollFire(options);
+    
+  //구글 에널리틱스
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-65881210-2', 'auto');
+  ga('send', 'pageview');
+
+(function($){
+  $(function(){
+
+    $('.button-collapse').sideNav();
+
+  }); // end of document ready
+})(jQuery); // end of jQuery name space
+</script>
+</body>
+</html>
